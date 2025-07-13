@@ -1,0 +1,212 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 222 47% 30%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 210 30% 92%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 222 84% 70%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 210 40% 98%;
+    --sidebar-primary-foreground: 222 47% 11%;
+    --sidebar-accent: 223 47% 20%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 223 47% 20%;
+    --sidebar-ring: 224 76% 48%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 223 47% 14%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 223 47% 14%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 88%;
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 223 47% 20%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 223 47% 20%;
+    --muted-foreground: 215 20% 75%;
+
+    --accent: 223 47% 20%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 40%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 223 47% 20%;
+    --input: 223 47% 20%;
+    --ring: 210 40% 78%;
+
+    --sidebar-background: 223 47% 14%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 210 40% 98%;
+    --sidebar-primary-foreground: 222 47% 11%;
+    --sidebar-accent: 223 47% 20%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 223 47% 25%;
+    --sidebar-ring: 224 76% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    @apply font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/40;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/60;
+}
+
+/* Animations */
+.animate-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+.slide-in {
+  animation: slide-in 0.4s ease-out;
+}
+
+/* Smooth transitions */
+* {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card {
+  @apply bg-card/90 backdrop-blur-sm border border-border/60;
+}
+
+/* Prevent elements from being selectable */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Mobile-friendly improvements */
+@media (max-width: 640px) {
+  .container {
+    @apply px-4;
+  }
+  
+  h1 {
+    @apply text-2xl;
+  }
+  
+  h2 {
+    @apply text-xl;
+  }
+  
+  .card-compact {
+    @apply p-3;
+  }
+}
+
+/* Responsive tables */
+.responsive-table {
+  @apply w-full;
+}
+
+@media (max-width: 768px) {
+  .responsive-table thead {
+    @apply hidden;
+  }
+  
+  .responsive-table tbody tr {
+    @apply block border-b mb-4;
+  }
+  
+  .responsive-table tbody td {
+    @apply block text-right pl-28 relative py-2;
+  }
+  
+  .responsive-table tbody td::before {
+    @apply content-[attr(data-label)] absolute left-4 top-2 font-medium text-sm;
+  }
+}
+
+/* Fix for small screens */
+@media (max-width: 640px) {
+  input, select, textarea, button {
+    @apply text-sm;
+  }
+  
+  .dropdown-menu {
+    @apply w-48;
+  }
+}
