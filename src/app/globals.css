@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #1142d4;
+  --color-gold: #c5a059;
+  --color-gold-accent: #d4af37;
+  --color-background-light: #f6f6f8;
+  --color-background-dark: #101522;
+
+  /* Preserve existing palette for compatibility if needed */
+  --color-gold-50: #fefcf0;
+  --color-gold-100: #fdf8e1;
+  --color-gold-200: #fbf1c3;
+  --color-gold-300: #f9eab5;
+  --color-gold-400: #f7e3a7;
+  --color-gold-500: #f5dc99;
+  --color-gold-600: #d4af37;
+  --color-gold-700: #b8860b;
+  --color-gold-800: #8b6508;
+  --color-gold-900: #5c4305;
+  --color-gold-950: #2e2103;
+
+  --color-warm-white: #faf9f6;
+  --color-hospitality-black: #1a1a1a;
+
+  --font-sans: "Inter", "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter", sans-serif;
+
+  --radius-default: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+}
+
+@layer base {
+  body {
+    @apply bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-sans antialiased;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border border-white/30 dark:border-slate-800/30;
+  }
+
+  .hero-gradient {
+    background: linear-gradient(to bottom, rgba(16, 21, 34, 0.4), rgba(16, 21, 34, 0.6));
+  }
+
+  .chart-gradient {
+    background: linear-gradient(180deg, rgba(17, 66, 212, 0.1) 0%, rgba(17, 66, 212, 0) 100%);
+  }
+
+  .auth-split-bg {
+    background-image: linear-gradient(rgba(17, 66, 212, 0.4), rgba(16, 21, 34, 0.8)), url(https://lh3.googleusercontent.com/aida-public/AB6AXuBS17ixjMvOQ_elhqsfUoPGy2K6s1FZ89IlsQDS2012ghAh22mrpDq286RfG-Icj6tPgSIbDlPqEpZNkDoH0-qVhFhgIVCNnIFDqczgbafefB7NLcA6cGv9JOc3RqUwrhBSHt0PAJsB5LFIk1vm-nILXPHEf_tzhwfrXpYRe1iLc0ZrC2EOraHK2EVpghJNiGkObkEujxS51VtpA5Uh9Y6ZaJJku3m8XnMloOXYsuq269McRQJOieW4fSR-yTCBkRzCrSsJYejadw);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .card-elegant {
+    @apply bg-white dark:bg-background-dark border border-slate-200 dark:border-slate-800 shadow-sm rounded-xl hover:shadow-md transition-shadow;
+  }
+
+  .heading-elegant {
+    @apply text-slate-900 dark:text-white font-bold tracking-tight;
+  }
+}

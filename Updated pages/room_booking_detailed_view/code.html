@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Room Booking Detailed View - Hotel 360</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1142d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101522",
+                        "accent-gold": "#b8860b",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+        .dark .custom-scrollbar::-webkit-scrollbar-thumb { background: #1e293b; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex justify-end overflow-hidden">
+<!-- Mock Background Content (Dashboard) -->
+<div class="fixed inset-0 p-8 opacity-20 pointer-events-none">
+<div class="flex items-center justify-between mb-8">
+<div class="h-10 w-48 bg-slate-300 dark:bg-slate-700 rounded-lg"></div>
+<div class="h-10 w-10 bg-slate-300 dark:bg-slate-700 rounded-full"></div>
+</div>
+<div class="grid grid-cols-4 gap-6 mb-8">
+<div class="h-32 bg-white dark:bg-slate-800 rounded-xl shadow-sm"></div>
+<div class="h-32 bg-white dark:bg-slate-800 rounded-xl shadow-sm"></div>
+<div class="h-32 bg-white dark:bg-slate-800 rounded-xl shadow-sm"></div>
+<div class="h-32 bg-white dark:bg-slate-800 rounded-xl shadow-sm"></div>
+</div>
+<div class="h-96 bg-white dark:bg-slate-800 rounded-xl shadow-sm"></div>
+</div>
+<!-- Right Side Drawer Container -->
+<div class="relative w-full max-w-xl h-screen bg-white dark:bg-slate-900 shadow-2xl flex flex-col border-l border-slate-200 dark:border-slate-800">
+<!-- Header Section -->
+<header class="sticky top-0 z-10 px-6 py-6 border-b border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900">
+<div class="flex justify-between items-start mb-4">
+<button class="p-2 -ml-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors text-slate-400">
+<span class="material-icons">close</span>
+</button>
+<div class="flex items-center gap-2">
+<span class="px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-accent-gold text-xs font-bold uppercase tracking-wider rounded-full border border-yellow-200 dark:border-yellow-800/50">
+                        Checked In
+                    </span>
+<span class="material-icons text-slate-400 cursor-pointer hover:text-primary transition-colors">more_vert</span>
+</div>
+</div>
+<div class="flex items-end gap-4">
+<div class="w-16 h-16 rounded-xl overflow-hidden bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-icons text-3xl">person</span>
+</div>
+<div>
+<h2 class="text-2xl font-bold tracking-tight">Jonathan Wickramasinghe</h2>
+<p class="text-slate-500 text-sm flex items-center gap-1">
+<span class="material-icons text-xs">loyalty</span>
+                        Platinum Member • Booking #H360-88291
+                    </p>
+</div>
+</div>
+</header>
+<!-- Main Content Area (Scrollable) -->
+<main class="flex-1 overflow-y-auto custom-scrollbar px-6 py-8 space-y-10">
+<!-- Stay Information -->
+<section>
+<div class="flex items-center gap-2 mb-4 text-primary">
+<span class="material-icons text-lg">calendar_today</span>
+<h3 class="font-semibold uppercase text-xs tracking-widest">Stay Information</h3>
+</div>
+<div class="grid grid-cols-2 gap-6 bg-slate-50 dark:bg-slate-800/50 p-5 rounded-xl border border-slate-100 dark:border-slate-800">
+<div class="space-y-1">
+<label class="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Check-In</label>
+<p class="font-medium text-sm">Oct 12, 2023</p>
+<p class="text-xs text-slate-500">From 14:00 PM</p>
+</div>
+<div class="space-y-1">
+<label class="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Check-Out</label>
+<p class="font-medium text-sm">Oct 15, 2023</p>
+<p class="text-xs text-slate-500">Before 11:00 AM</p>
+</div>
+<div class="space-y-1 pt-4 border-t border-slate-200 dark:border-slate-700">
+<label class="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Room</label>
+<p class="font-medium text-sm">402 (Deluxe King)</p>
+</div>
+<div class="space-y-1 pt-4 border-t border-slate-200 dark:border-slate-700">
+<label class="text-[10px] uppercase tracking-wider text-slate-400 font-bold">Duration</label>
+<p class="font-medium text-sm">3 Nights</p>
+</div>
+</div>
+</section>
+<!-- Guest Details -->
+<section>
+<div class="flex items-center gap-2 mb-4 text-primary">
+<span class="material-icons text-lg">contact_mail</span>
+<h3 class="font-semibold uppercase text-xs tracking-widest">Guest Details</h3>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 group-hover:text-primary transition-colors">
+<span class="material-icons text-sm">alternate_email</span>
+</div>
+<div>
+<p class="text-xs text-slate-400 font-medium">Email Address</p>
+<p class="text-sm font-medium">j.wick@continental.com</p>
+</div>
+</div>
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 group-hover:text-primary transition-colors">
+<span class="material-icons text-sm">smartphone</span>
+</div>
+<div>
+<p class="text-xs text-slate-400 font-medium">Phone Number</p>
+<p class="text-sm font-medium">+1 (555) 902-1142</p>
+</div>
+</div>
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 group-hover:text-primary transition-colors">
+<span class="material-icons text-sm">badge</span>
+</div>
+<div>
+<p class="text-xs text-slate-400 font-medium">ID / Passport Number</p>
+<p class="text-sm font-medium">********-4299</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Billing Summary -->
+<section>
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-icons text-lg">receipt_long</span>
+<h3 class="font-semibold uppercase text-xs tracking-widest">Billing Summary</h3>
+</div>
+<button class="text-[10px] font-bold text-primary uppercase hover:underline">Manage Folio</button>
+</div>
+<div class="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+<table class="w-full text-sm">
+<thead class="bg-slate-50 dark:bg-slate-800/50">
+<tr>
+<th class="text-left px-4 py-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Description</th>
+<th class="text-right px-4 py-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest">Amount</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr>
+<td class="px-4 py-3">Room Charge (3 Nights)</td>
+<td class="px-4 py-3 text-right font-medium">$840.00</td>
+</tr>
+<tr>
+<td class="px-4 py-3">Extra Service: Mini Bar</td>
+<td class="px-4 py-3 text-right font-medium">$42.00</td>
+</tr>
+<tr>
+<td class="px-4 py-3">Taxes &amp; Fees (12%)</td>
+<td class="px-4 py-3 text-right font-medium">$105.84</td>
+</tr>
+</tbody>
+<tfoot class="bg-slate-50/50 dark:bg-slate-800/30">
+<tr>
+<td class="px-4 py-4 font-bold text-slate-900 dark:text-white">Total Amount Due</td>
+<td class="px-4 py-4 text-right font-bold text-primary text-lg">$987.84</td>
+</tr>
+</tfoot>
+</table>
+</div>
+<div class="mt-4 flex items-center gap-2 p-3 bg-blue-50 dark:bg-primary/10 rounded-lg text-primary text-xs">
+<span class="material-icons text-sm">info</span>
+<span>Early check-out policy: Charges may apply after 11:00 AM.</span>
+</div>
+</section>
+</main>
+<!-- Actions Footer -->
+<footer class="sticky bottom-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 p-6">
+<div class="grid grid-cols-2 gap-4 mb-4">
+<button class="flex items-center justify-center gap-2 px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-lg font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-all active:scale-[0.98]">
+<span class="material-icons text-sm">edit</span>
+                    Edit Booking
+                </button>
+<button class="flex items-center justify-center gap-2 px-4 py-3 border border-slate-200 dark:border-slate-700 rounded-lg font-semibold text-sm hover:bg-slate-50 dark:hover:bg-slate-800 transition-all active:scale-[0.98]">
+<span class="material-icons text-sm">print</span>
+                    Print Invoice
+                </button>
+</div>
+<button class="w-full flex items-center justify-center gap-2 bg-primary text-white py-4 rounded-xl font-bold text-base shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all active:scale-[0.98]">
+<span class="material-icons">logout</span>
+                Process Check Out
+            </button>
+<p class="text-center mt-4 text-[10px] text-slate-400 uppercase font-medium tracking-tighter">
+                Last modified by Admin on Oct 14, 2023 at 09:12 AM
+            </p>
+</footer>
+</div>
+<!-- Background Decoration -->
+<div class="fixed top-0 right-0 w-[600px] h-full -z-10 bg-gradient-to-l from-primary/5 to-transparent pointer-events-none"></div>
+</body></html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Guest Invoice PDF Preview - Hotel 360</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1142d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101522",
+                        "gold": "#D4AF37",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+            body {
+                background: white !important;
+            }
+            .invoice-paper {
+                box-shadow: none !important;
+                border: none !important;
+                margin: 0 !important;
+                width: 100% !important;
+            }
+        }
+        .invoice-paper {
+            width: 210mm;
+            min-height: 297mm;
+        }
+        .watermark {
+            pointer-events: none;
+            user-select: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-200 transition-colors duration-200">
+<!-- Header Toolbar (Desktop Only) -->
+<header class="no-print sticky top-0 z-50 w-full bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10 px-6 py-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-primary/10 rounded-full transition-colors">
+<span class="material-icons text-primary">arrow_back</span>
+</button>
+<div>
+<h1 class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Invoice Preview</h1>
+<p class="text-xs text-slate-500 dark:text-slate-400">INV-2023-0842 • Mr. John Doe</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="hidden sm:flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+<span class="material-icons text-sm">mail</span>
+                Email Guest
+            </button>
+<button class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" onclick="window.print()">
+<span class="material-icons text-sm">print</span>
+                Print
+            </button>
+<button class="flex items-center gap-2 px-5 py-2 text-sm font-medium bg-primary text-white hover:bg-primary/90 rounded-lg shadow-sm shadow-primary/20 transition-all active:scale-95">
+<span class="material-icons text-sm">download</span>
+                Download PDF
+            </button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex justify-center p-4 md:p-12">
+<!-- The "Paper" -->
+<div class="invoice-paper relative bg-white dark:bg-slate-900 shadow-2xl rounded-xl p-12 md:p-16 overflow-hidden flex flex-col">
+<!-- Branding & Metadata Header -->
+<div class="flex justify-between items-start mb-16">
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center">
+<span class="material-icons text-white text-3xl">hotel</span>
+</div>
+<div>
+<h2 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white uppercase">Hotel 360</h2>
+<p class="text-[10px] tracking-widest text-primary font-semibold uppercase">Luxury &amp; Lifestyle</p>
+</div>
+</div>
+<div class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-xs">
+                        123 Luxury Way, Sky District<br/>
+                        Metropolis, NY 10001<br/>
+                        United States<br/>
+<span class="text-slate-400 dark:text-slate-500 text-xs">Tax ID: US-984421-X</span>
+</div>
+</div>
+<div class="text-right">
+<h3 class="text-4xl font-light text-slate-300 dark:text-slate-700 uppercase tracking-tighter mb-4">Invoice</h3>
+<div class="space-y-1 text-sm">
+<p class="flex justify-end gap-4"><span class="text-slate-400">Invoice Number</span> <span class="font-semibold text-slate-900 dark:text-white">#INV-2023-0842</span></p>
+<p class="flex justify-end gap-4"><span class="text-slate-400">Date Issued</span> <span class="font-medium text-slate-700 dark:text-slate-300">Oct 15, 2023</span></p>
+<p class="flex justify-end gap-4"><span class="text-slate-400">Reference</span> <span class="font-medium text-slate-700 dark:text-slate-300">Booking RE-5502</span></p>
+</div>
+</div>
+</div>
+<!-- Billing Info Grid -->
+<div class="grid grid-cols-2 gap-12 mb-16 border-y border-slate-100 dark:border-slate-800 py-10">
+<div>
+<h4 class="text-[11px] font-bold uppercase tracking-wider text-primary mb-4">Guest Details</h4>
+<p class="text-lg font-semibold text-slate-900 dark:text-white mb-1">Mr. John Doe</p>
+<div class="text-sm text-slate-500 dark:text-slate-400 space-y-1">
+<p>john.doe@email.com</p>
+<p>+1 (555) 012-3456</p>
+<p class="pt-2 text-slate-400 italic">Preferred: High floor, extra pillows</p>
+</div>
+</div>
+<div>
+<h4 class="text-[11px] font-bold uppercase tracking-wider text-primary mb-4">Stay Information</h4>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<p class="text-[10px] text-slate-400 uppercase">Check-in</p>
+<p class="text-sm font-medium text-slate-700 dark:text-slate-300">Oct 12, 2023</p>
+</div>
+<div>
+<p class="text-[10px] text-slate-400 uppercase">Check-out</p>
+<p class="text-sm font-medium text-slate-700 dark:text-slate-300">Oct 15, 2023</p>
+</div>
+<div>
+<p class="text-[10px] text-slate-400 uppercase">Room Number</p>
+<p class="text-sm font-medium text-slate-700 dark:text-slate-300">402 (Deluxe Suite)</p>
+</div>
+<div>
+<p class="text-[10px] text-slate-400 uppercase">Duration</p>
+<p class="text-sm font-medium text-slate-700 dark:text-slate-300">3 Nights</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Items Table -->
+<div class="flex-grow">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b-2 border-slate-100 dark:border-slate-800">
+<th class="py-4 text-[11px] font-bold uppercase tracking-wider text-slate-400">Date</th>
+<th class="py-4 text-[11px] font-bold uppercase tracking-wider text-slate-400">Description</th>
+<th class="py-4 text-[11px] font-bold uppercase tracking-wider text-slate-400 text-center">Qty/Nights</th>
+<th class="py-4 text-[11px] font-bold uppercase tracking-wider text-slate-400 text-right">Unit Price</th>
+<th class="py-4 text-[11px] font-bold uppercase tracking-wider text-slate-400 text-right">Amount</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr>
+<td class="py-5 text-sm text-slate-500">Oct 12-15</td>
+<td class="py-5">
+<p class="text-sm font-semibold text-slate-900 dark:text-white">Deluxe Ocean Suite</p>
+<p class="text-xs text-slate-400">Accommodation package with city view</p>
+</td>
+<td class="py-5 text-sm text-slate-600 dark:text-slate-400 text-center">3</td>
+<td class="py-5 text-sm text-slate-600 dark:text-slate-400 text-right">$450.00</td>
+<td class="py-5 text-sm font-medium text-slate-900 dark:text-white text-right">$1,350.00</td>
+</tr>
+<tr>
+<td class="py-5 text-sm text-slate-500">Oct 13</td>
+<td class="py-5">
+<p class="text-sm font-semibold text-slate-900 dark:text-white">Room Service - Dinner</p>
+<p class="text-xs text-slate-400">Steak Frites &amp; Cabernet Sauvignon</p>
+</td>
+<td class="py-5 text-sm text-slate-600 dark:text-slate-400 text-center">1</td>
+<td class="py-5 text-sm text-slate-600 dark:text-slate-400 text-right">$125.50</td>
+<td class="py-5 text-sm font-medium text-slate-900 dark:text-white text-right">$125.50</td>
+</tr>
+<tr>
+<td class="py-5 text-sm text-slate-500">Oct 14</td>
+<td class="py-5">
+<p class="text-sm font-semibold text-slate-900 dark:text-white">Spa - Swedish Massage</p>
+<p class="text-xs text-slate-400">60 Minutes Deep Tissue Therapy</p>
+</td>
+<td class="py-5 text-sm text-slate-600 dark:text-slate-400 text-center">1</td>
+<td class="py-5 text-sm text-slate-600 dark:text-slate-400 text-right">$180.00</td>
+<td class="py-5 text-sm font-medium text-slate-900 dark:text-white text-right">$180.00</td>
+</tr>
+<tr>
+<td class="py-5 text-sm text-slate-500">Oct 14</td>
+<td class="py-5">
+<p class="text-sm font-semibold text-slate-900 dark:text-white">Mini Bar Charges</p>
+<p class="text-xs text-slate-400">Premium snacks and beverages</p>
+</td>
+<td class="py-5 text-sm text-slate-600 dark:text-slate-400 text-center">1</td>
+<td class="py-5 text-sm text-slate-600 dark:text-slate-400 text-right">$42.00</td>
+<td class="py-5 text-sm font-medium text-slate-900 dark:text-white text-right">$42.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Totals & Stamp Section -->
+<div class="mt-12 flex justify-between items-end">
+<div class="max-w-[300px]">
+<!-- Paid Stamp -->
+<div class="watermark transform -rotate-12 border-4 border-gold/40 text-gold/40 rounded-xl px-6 py-2 inline-block font-black text-4xl mb-8 select-none">
+                        PAID
+                    </div>
+<div class="text-xs text-slate-400 leading-relaxed italic">
+                        Terms: Payment was processed via Credit Card ending in **** 4421. Thank you for choosing Hotel 360. We hope you enjoyed your stay!
+                    </div>
+</div>
+<div class="w-72 space-y-3">
+<div class="flex justify-between text-sm">
+<span class="text-slate-400">Subtotal</span>
+<span class="text-slate-700 dark:text-slate-300">$1,697.50</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-400">Occupancy Tax (14%)</span>
+<span class="text-slate-700 dark:text-slate-300">$237.65</span>
+</div>
+<div class="flex justify-between text-sm pb-3 border-b border-slate-100 dark:border-slate-800">
+<span class="text-slate-400">Resort Fee</span>
+<span class="text-slate-700 dark:text-slate-300">$45.00</span>
+</div>
+<div class="flex justify-between items-center pt-2">
+<span class="text-base font-bold text-slate-900 dark:text-white">Total Amount</span>
+<span class="text-2xl font-black text-primary">$1,980.15</span>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="mt-20 pt-8 border-t border-slate-50 dark:border-slate-800 text-center">
+<div class="flex justify-center gap-6 mb-4">
+<div class="flex items-center gap-1 text-[10px] text-slate-400 uppercase tracking-widest">
+<span class="material-icons text-sm">public</span>
+                        www.hotel360.com
+                    </div>
+<div class="flex items-center gap-1 text-[10px] text-slate-400 uppercase tracking-widest">
+<span class="material-icons text-sm">phone</span>
+                        +1 (800) 360-HOTEL
+                    </div>
+</div>
+<p class="text-[9px] text-slate-300 dark:text-slate-600">
+                    Hotel 360 Operations LLC. This document is a computer-generated receipt and does not require a physical signature.
+                </p>
+</footer>
+</div>
+</main>
+<!-- Floating Help Button (Desktop Only) -->
+<div class="no-print fixed bottom-8 right-8">
+<button class="w-12 h-12 bg-white dark:bg-slate-800 shadow-xl rounded-full flex items-center justify-center text-slate-500 hover:text-primary transition-colors border border-slate-100 dark:border-slate-700">
+<span class="material-icons">help_outline</span>
+</button>
+</div>
+</body></html>

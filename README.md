@@ -1,69 +1,85 @@
-# Welcome to your Lovable project
+# Hotel 360 - Premium Multi-Branch Hotel Management Platform
 
-## Project info
+Hotel 360 is a comprehensive, cloud-based SaaS solution designed for modern hoteliers to manage multiple properties, bookings, and guest experiences from a single, unified dashboard.
 
-**URL**: https://lovable.dev/projects/139c479b-ca2b-439f-b7c1-8110db942b6c
+## 🌟 Key Features
 
-## How can I edit this code?
+### 🏢 Multi-Branch Control
 
-There are several ways of editing your application.
+- **Centralized Management**: Manage global or regional hotel chains from a single login.
+- **Real-time Status**: View the operational heartbeat of all properties at a glance.
+- **Branch-Specific Settings**: Customize configurations for each location.
 
-**Use Lovable**
+### 📊 Operational Dashboard
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/139c479b-ca2b-439f-b7c1-8110db942b6c) and start prompting.
+- **Live Occupancy Tracking**: Monitor room availability and occupancy rates in real-time.
+- **Revenue Ledger**: Track gross revenue and financial performance metrics.
+- **Daily Arrivals/Departures**: Stay on top of guest check-ins and check-outs.
+- **Inventory Overview**: Manage total room assets and availability.
 
-Changes made via Lovable will be committed automatically to this repo.
+### 🛌 Room & Inventory Management
 
-**Use your preferred IDE**
+- **Smart Room Allocation**: Efficiently assign rooms based on guest preferences and availability.
+- **Room Status Tracking**: Real-time updates on Clean, Occupied, Dirty, and Reserved states.
+- **Dynamic Room Types**: Define and manage various room categories and amenities.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 📅 Booking & Guest Management
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- **Integrated Booking Engine**: Seamlessly manage direct bookings and guest folios.
+- **Recent Activity Logs**: Track every guest interaction and booking modification.
+- **Guest Profiles**: Maintain detailed records for personalized hospitality.
 
-Follow these steps:
+### 💳 Financials & Invoicing
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- **Automated Invoicing**: Generate professional invoices for stays and services.
+- **Subscription Management**: Flexible pricing tiers (Starter, Growth, Scale, Enterprise) to suit your business size.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### 📈 Reports & Analytics
 
-# Step 3: Install the necessary dependencies.
-npm i
+- **Strategic Intel**: Gain insights from AI-driven data analysis.
+- **Performance Audits**: Run detailed reports to optimize operations and revenue.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+## 🛠 Tech Stack
 
-**Edit a file directly in GitHub**
+- **Framework**: [Next.js 15+](https://nextjs.org/) (App Router)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Database & Auth**: [Supabase](https://supabase.com/)
+- **Icons**: [Lucide React](https://lucide.dev/) & Material Icons
+- **Deployment**: [Vercel](https://vercel.com/)
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🚀 Getting Started
 
-**Use GitHub Codespaces**
+### Prerequisites
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- Node.js 18+
+- npm / yarn / pnpm / bun
 
-## What technologies are used for this project?
+### Installation
 
-This project is built with .
+1. Clone the repository:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+   ```bash
+   git clone <repository-url>
+   cd hotel-360
+   ```
 
-## How can I deploy this project?
+2. Install dependencies:
 
-Simply open [Lovable](https://lovable.dev/projects/139c479b-ca2b-439f-b7c1-8110db942b6c) and click on Share -> Publish.
+   ```bash
+   npm install
+   ```
 
-## I want to use a custom domain - is that possible?
+3. Set up environment variables:
+   Copy `.env.local.example` to `.env.local` and add your Supabase credentials.
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## 📄 License
+
+© 2026 Hotel 360 SaaS. Developed by Africentric Technology Hub.

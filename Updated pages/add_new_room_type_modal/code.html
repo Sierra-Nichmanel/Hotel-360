@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add New Room Type - Hotel 360</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#1142d4",
+                "accent-gold": "#D4AF37",
+                "background-light": "#f6f6f8",
+                "background-dark": "#101522",
+              },
+              fontFamily: {
+                "display": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-200 min-h-screen">
+<!-- Mock Background Dashboard -->
+<div class="fixed inset-0 z-0 p-8 overflow-hidden opacity-40 select-none pointer-events-none">
+<div class="max-w-7xl mx-auto">
+<header class="flex justify-between items-center mb-8">
+<div>
+<h1 class="text-3xl font-bold text-slate-900 dark:text-white">Room Types</h1>
+<p class="text-slate-500">Manage your hotel's accommodation categories.</p>
+</div>
+</header>
+<div class="grid grid-cols-3 gap-6">
+<div class="h-64 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700"></div>
+<div class="h-64 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700"></div>
+<div class="h-64 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700"></div>
+</div>
+</div>
+</div>
+<!-- Modal Overlay Backdrop -->
+<div class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-40 flex items-center justify-center p-4">
+<!-- Modal Container -->
+<div class="bg-white dark:bg-slate-900 w-full max-w-4xl max-h-[90vh] rounded-xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in zoom-in duration-300">
+<!-- Header -->
+<div class="px-8 py-6 border-b border-slate-100 dark:border-slate-800 flex justify-between items-start">
+<div>
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white leading-tight">Add New Room Type</h2>
+<p class="text-slate-500 dark:text-slate-400 mt-1 text-sm">Define the properties and amenities for your new room category.</p>
+</div>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+<span class="material-icons-round">close</span>
+</button>
+</div>
+<!-- Scrollable Content Section -->
+<div class="flex-1 overflow-y-auto p-8">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<!-- Left Column: Basic Info -->
+<div class="space-y-6">
+<h3 class="text-xs font-bold uppercase tracking-wider text-primary/80 mb-4">Basic Information</h3>
+<div class="space-y-4">
+<div>
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Room Type Name</label>
+<input class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all text-slate-900 dark:text-white" placeholder="e.g. Executive Sea Suite" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Base Price (Per Night)</label>
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 font-medium">$</span>
+<input class="w-full pl-8 pr-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all text-slate-900 dark:text-white" placeholder="0.00" type="number"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Max Capacity</label>
+<select class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all text-slate-900 dark:text-white appearance-none">
+<option>1 Person</option>
+<option>2 People</option>
+<option selected="">3 People</option>
+<option>4 People</option>
+<option>5+ People</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Description</label>
+<textarea class="w-full px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary transition-all text-slate-900 dark:text-white resize-none" placeholder="Describe the room's unique features..." rows="4"></textarea>
+</div>
+</div>
+<div class="p-4 bg-primary/5 dark:bg-primary/10 rounded-lg border border-primary/20 flex items-start space-x-3">
+<span class="material-icons-round text-primary mt-0.5">info</span>
+<p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Base price is the standard rate. You can configure seasonal pricing and special discounts later in the "Rates &amp; Rules" section.
+                            </p>
+</div>
+</div>
+<!-- Right Column: Amenity Selection -->
+<div>
+<h3 class="text-xs font-bold uppercase tracking-wider text-primary/80 mb-4">Room Amenities</h3>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+<!-- Amenity Card: Selected -->
+<button class="group flex flex-col items-center justify-center p-4 rounded-xl border-2 border-accent-gold bg-white dark:bg-slate-800 shadow-sm transition-all hover:shadow-md relative">
+<span class="material-icons-round text-accent-gold mb-2 text-3xl">wifi</span>
+<span class="text-xs font-semibold text-slate-900 dark:text-white">Free Wi-Fi</span>
+<div class="absolute top-2 right-2">
+<span class="material-icons-round text-accent-gold text-lg">check_circle</span>
+</div>
+</button>
+<!-- Amenity Card: Not Selected -->
+<button class="group flex flex-col items-center justify-center p-4 rounded-xl border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-800 transition-all hover:border-primary/30 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+<span class="material-icons-round text-slate-400 dark:text-slate-600 group-hover:text-primary mb-2 text-3xl transition-colors">kitchen</span>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Mini Bar</span>
+</button>
+<!-- Amenity Card: Selected -->
+<button class="group flex flex-col items-center justify-center p-4 rounded-xl border-2 border-accent-gold bg-white dark:bg-slate-800 shadow-sm transition-all hover:shadow-md relative">
+<span class="material-icons-round text-accent-gold mb-2 text-3xl">king_bed</span>
+<span class="text-xs font-semibold text-slate-900 dark:text-white">King Bed</span>
+<div class="absolute top-2 right-2">
+<span class="material-icons-round text-accent-gold text-lg">check_circle</span>
+</div>
+</button>
+<!-- Amenity Card: Selected -->
+<button class="group flex flex-col items-center justify-center p-4 rounded-xl border-2 border-accent-gold bg-white dark:bg-slate-800 shadow-sm transition-all hover:shadow-md relative">
+<span class="material-icons-round text-accent-gold mb-2 text-3xl">ac_unit</span>
+<span class="text-xs font-semibold text-slate-900 dark:text-white">Air Condition</span>
+<div class="absolute top-2 right-2">
+<span class="material-icons-round text-accent-gold text-lg">check_circle</span>
+</div>
+</button>
+<!-- Amenity Card: Not Selected -->
+<button class="group flex flex-col items-center justify-center p-4 rounded-xl border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-800 transition-all hover:border-primary/30 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+<span class="material-icons-round text-slate-400 dark:text-slate-600 group-hover:text-primary mb-2 text-3xl transition-colors">tv</span>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Smart TV</span>
+</button>
+<!-- Amenity Card: Selected -->
+<button class="group flex flex-col items-center justify-center p-4 rounded-xl border-2 border-accent-gold bg-white dark:bg-slate-800 shadow-sm transition-all hover:shadow-md relative">
+<span class="material-icons-round text-accent-gold mb-2 text-3xl">tsunami</span>
+<span class="text-xs font-semibold text-slate-900 dark:text-white">Sea View</span>
+<div class="absolute top-2 right-2">
+<span class="material-icons-round text-accent-gold text-lg">check_circle</span>
+</div>
+</button>
+<!-- Amenity Card: Not Selected -->
+<button class="group flex flex-col items-center justify-center p-4 rounded-xl border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-800 transition-all hover:border-primary/30 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+<span class="material-icons-round text-slate-400 dark:text-slate-600 group-hover:text-primary mb-2 text-3xl transition-colors">shower</span>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Rain Shower</span>
+</button>
+<!-- Amenity Card: Not Selected -->
+<button class="group flex flex-col items-center justify-center p-4 rounded-xl border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-800 transition-all hover:border-primary/30 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+<span class="material-icons-round text-slate-400 dark:text-slate-600 group-hover:text-primary mb-2 text-3xl transition-colors">coffee_maker</span>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">Nespresso</span>
+</button>
+<!-- Amenity Card: Not Selected -->
+<button class="group flex flex-col items-center justify-center p-4 rounded-xl border-2 border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-800 transition-all hover:border-primary/30 hover:bg-slate-50 dark:hover:bg-slate-800/50">
+<span class="material-icons-round text-slate-400 dark:text-slate-600 group-hover:text-primary mb-2 text-3xl transition-colors">room_service</span>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">24h Service</span>
+</button>
+</div>
+<div class="mt-8">
+<h4 class="text-xs font-medium text-slate-500 dark:text-slate-400 mb-4 flex items-center">
+<span class="material-icons-round text-sm mr-1">photo_library</span>
+                                Featured Image
+                            </h4>
+<div class="aspect-video w-full rounded-lg bg-slate-100 dark:bg-slate-800 border-2 border-dashed border-slate-200 dark:border-slate-700 flex flex-col items-center justify-center cursor-pointer hover:bg-slate-200 dark:hover:bg-slate-800/80 transition-all">
+<span class="material-icons-round text-slate-400 text-4xl mb-2">add_a_photo</span>
+<p class="text-sm font-medium text-slate-500">Click to upload room preview</p>
+<p class="text-[10px] text-slate-400 mt-1">PNG, JPG up to 10MB</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="px-8 py-6 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-100 dark:border-slate-800 flex justify-end items-center gap-4">
+<button class="px-6 py-2.5 text-sm font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+                    Cancel
+                </button>
+<button class="bg-primary hover:bg-primary/90 text-white px-8 py-2.5 rounded-lg font-semibold text-sm shadow-lg shadow-primary/20 transition-all active:transform active:scale-95">
+                    Create Room Type
+                </button>
+</div>
+</div>
+</div>
+</body></html>

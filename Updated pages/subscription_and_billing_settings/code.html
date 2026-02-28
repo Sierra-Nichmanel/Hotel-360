@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Subscription &amp; Billing - Hotel 360</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1142d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101522",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="flex min-h-screen">
+<!-- Sidebar Navigation -->
+<aside class="w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 hidden lg:flex flex-col">
+<div class="p-6">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-icons text-3xl">apartment</span>
+<span class="font-bold text-xl tracking-tight">Hotel 360</span>
+</div>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-icons">dashboard</span> Dashboard
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-icons">calendar_today</span> Bookings
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-icons">bed</span> Rooms
+                </a>
+<div class="pt-4 pb-2 px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider">Settings</div>
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary font-medium rounded-lg" href="#">
+<span class="material-icons">payments</span> Subscription
+                </a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">
+<span class="material-icons">settings</span> General
+                </a>
+</nav>
+<div class="p-4 border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-3 px-2">
+<img class="w-8 h-8 rounded-full object-cover" data-alt="Profile picture of hotel manager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuClPnjH9TGXPtzmQG0PGnnyoy7P3P21C4-yKrJywf46R6D7ks40GkPyOE1Ae0wZZC63t7GUBECOHBYZoAn212cnxKkRt8d7is-xW0jAg63df6Lw1bYxvWfROCd9YDx_D940F0SaeXewCqGpw760uFACkOYqKiDpNXUI3QTGiCDLGi2UVOp7Vp4r0BTX-1mkIhmmQEi4aK6jGa_fL5kVk_NaU54zoYTcsft1eAcl9WUzWfm_s5g5hyiOp-vQxaJ48ScV8zjNO8kDzQ"/>
+<div class="text-sm">
+<p class="font-semibold">Alex Rivera</p>
+<p class="text-slate-500 text-xs">Manager</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto">
+<!-- Top Header -->
+<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-10 px-8 py-4">
+<div class="flex justify-between items-center max-w-6xl mx-auto">
+<div>
+<h1 class="text-2xl font-bold">Subscription &amp; Billing</h1>
+<p class="text-sm text-slate-500 dark:text-slate-400">Manage your hotel's billing cycles and plan usage.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-3 py-1.5 rounded-full text-xs font-medium border border-blue-100 dark:border-blue-800">
+<span class="material-icons text-sm">security</span>
+                            Secured by Paystack
+                        </div>
+</div>
+</div>
+</header>
+<div class="max-w-6xl mx-auto p-8 space-y-8">
+<!-- Overview Section -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Current Plan Card -->
+<div class="md:col-span-2 bg-white dark:bg-slate-900 border border-primary/20 rounded-xl p-6 shadow-sm relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4">
+<span class="bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">Active Plan</span>
+</div>
+<div class="flex flex-col h-full justify-between">
+<div>
+<h3 class="text-slate-500 dark:text-slate-400 font-medium mb-1">Current Subscription</h3>
+<div class="flex items-baseline gap-2 mb-4">
+<h2 class="text-3xl font-bold">Professional</h2>
+<span class="text-slate-400 text-lg font-normal">/ Annual</span>
+</div>
+<p class="text-sm text-slate-600 dark:text-slate-400 max-w-md">Your next renewal is on <span class="font-semibold text-slate-900 dark:text-white">October 15, 2024</span> for a total of $1,200.00.</p>
+</div>
+<div class="mt-8 flex gap-3">
+<button class="bg-primary text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-primary/90 transition-all text-sm">Change Plan</button>
+<button class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-5 py-2.5 rounded-lg font-semibold hover:bg-slate-50 transition-all text-sm">Cancel Subscription</button>
+</div>
+</div>
+</div>
+<!-- Usage Metrics -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-sm">
+<h3 class="font-semibold mb-4 text-sm uppercase tracking-wider text-slate-500">Resource Usage</h3>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between text-sm mb-2">
+<span class="text-slate-600 dark:text-slate-400">Monthly Bookings</span>
+<span class="font-semibold">850 / 1,000</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-sm mb-2">
+<span class="text-slate-600 dark:text-slate-400">Active Staff</span>
+<span class="font-semibold">12 / 15</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 80%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-sm mb-2">
+<span class="text-slate-600 dark:text-slate-400">Cloud Storage</span>
+<span class="font-semibold">4.2 / 10 GB</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 42%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Plan Comparison / Upgrade Section -->
+<section>
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-bold">Choose a Plan</h2>
+<div class="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-lg">
+<button class="px-4 py-1.5 text-sm font-medium rounded-md">Monthly</button>
+<button class="px-4 py-1.5 text-sm font-medium bg-white dark:bg-slate-700 shadow-sm rounded-md">Yearly (Save 20%)</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Starter -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-8 flex flex-col hover:border-primary/40 transition-all cursor-pointer">
+<h3 class="text-lg font-bold mb-2">Starter</h3>
+<p class="text-slate-500 text-sm mb-6">Perfect for small boutique hotels.</p>
+<div class="mb-8">
+<span class="text-3xl font-bold">$49</span>
+<span class="text-slate-400">/mo</span>
+</div>
+<ul class="space-y-4 mb-10 flex-1">
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400"><span class="material-icons text-green-500 text-sm">check_circle</span> Up to 20 rooms</li>
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400"><span class="material-icons text-green-500 text-sm">check_circle</span> 500 bookings/mo</li>
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400"><span class="material-icons text-green-500 text-sm">check_circle</span> Basic reporting</li>
+</ul>
+<button class="w-full py-2.5 border border-slate-200 dark:border-slate-700 rounded-lg font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800">Downgrade</button>
+</div>
+<!-- Professional (Current) -->
+<div class="bg-white dark:bg-slate-900 border-2 border-primary rounded-xl p-8 flex flex-col shadow-lg shadow-primary/5 relative scale-105 z-[5]">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">Current Plan</div>
+<h3 class="text-lg font-bold mb-2">Professional</h3>
+<p class="text-slate-500 text-sm mb-6">Ideal for growing hotel chains.</p>
+<div class="mb-8">
+<span class="text-3xl font-bold">$99</span>
+<span class="text-slate-400">/mo</span>
+</div>
+<ul class="space-y-4 mb-10 flex-1">
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400"><span class="material-icons text-primary text-sm">check_circle</span> Up to 100 rooms</li>
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400"><span class="material-icons text-primary text-sm">check_circle</span> Unlimited bookings</li>
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400"><span class="material-icons text-primary text-sm">check_circle</span> Advanced analytics</li>
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400"><span class="material-icons text-primary text-sm">check_circle</span> Multiple staff accounts</li>
+</ul>
+<button class="w-full py-2.5 bg-slate-100 dark:bg-slate-800 text-slate-400 rounded-lg font-semibold cursor-not-allowed" disabled="">Selected</button>
+</div>
+<!-- Enterprise -->
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-8 flex flex-col hover:border-primary/40 transition-all cursor-pointer">
+<h3 class="text-lg font-bold mb-2">Enterprise</h3>
+<p class="text-slate-500 text-sm mb-6">Complete custom hotel solutions.</p>
+<div class="mb-8">
+<span class="text-3xl font-bold">$249</span>
+<span class="text-slate-400">/mo</span>
+</div>
+<ul class="space-y-4 mb-10 flex-1">
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400"><span class="material-icons text-green-500 text-sm">check_circle</span> Unlimited rooms</li>
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400"><span class="material-icons text-green-500 text-sm">check_circle</span> API Access</li>
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400"><span class="material-icons text-green-500 text-sm">check_circle</span> Dedicated account manager</li>
+<li class="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400"><span class="material-icons text-green-500 text-sm">check_circle</span> White-label solution</li>
+</ul>
+<button class="w-full py-2.5 bg-primary text-white rounded-lg font-semibold hover:bg-primary/90">Upgrade Now</button>
+</div>
+</div>
+</section>
+<!-- Billing Information & Payment History -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Payment Methods -->
+<div class="space-y-6">
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-bold">Payment Method</h3>
+<button class="text-primary text-sm font-semibold hover:underline">Edit</button>
+</div>
+<div class="flex items-center gap-4 p-4 border border-slate-100 dark:border-slate-800 rounded-lg bg-slate-50/50 dark:bg-slate-800/30">
+<div class="w-12 h-8 bg-slate-200 dark:bg-slate-700 rounded flex items-center justify-center font-bold italic text-slate-500 text-xs">VISA</div>
+<div class="flex-1">
+<p class="text-sm font-semibold">Visa ending in 4242</p>
+<p class="text-xs text-slate-500">Expires 12/26</p>
+</div>
+<span class="material-icons text-green-500 text-xl">verified</span>
+</div>
+<div class="mt-6 flex flex-col gap-4">
+<div class="flex items-center gap-2 text-xs text-slate-500">
+<span class="material-icons text-sm">email</span>
+<span>Invoices sent to alex@hotel360.com</span>
+</div>
+<div class="pt-4 border-t border-slate-100 dark:border-slate-800">
+<div class="flex items-center justify-center gap-2 opacity-60">
+<span class="text-[10px] font-bold uppercase tracking-widest">Payments powered by</span>
+<div class="flex items-center gap-1">
+<div class="w-2 h-2 bg-[#09A5DB] rounded-full"></div>
+<span class="text-sm font-bold text-[#011b33] dark:text-white">paystack</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Payment History Table -->
+<div class="lg:col-span-2">
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl shadow-sm overflow-hidden">
+<div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center">
+<h3 class="font-bold">Payment History</h3>
+<button class="text-slate-500 hover:text-slate-700 dark:hover:text-slate-300">
+<span class="material-icons">filter_list</span>
+</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-800/50 text-slate-500 text-xs uppercase font-semibold">
+<tr>
+<th class="px-6 py-4">Date</th>
+<th class="px-6 py-4">Invoice ID</th>
+<th class="px-6 py-4">Amount</th>
+<th class="px-6 py-4">Status</th>
+<th class="px-6 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 text-sm">Oct 15, 2023</td>
+<td class="px-6 py-4 text-sm font-medium">INV-360-0092</td>
+<td class="px-6 py-4 text-sm">$1,200.00</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300 rounded-full text-xs font-medium">Paid</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:text-blue-700 p-1 rounded hover:bg-primary/10">
+<span class="material-icons">file_download</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 text-sm">Sep 15, 2023</td>
+<td class="px-6 py-4 text-sm font-medium">INV-360-0081</td>
+<td class="px-6 py-4 text-sm">$99.00</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300 rounded-full text-xs font-medium">Paid</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:text-blue-700 p-1 rounded hover:bg-primary/10">
+<span class="material-icons">file_download</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 text-sm">Aug 15, 2023</td>
+<td class="px-6 py-4 text-sm font-medium">INV-360-0075</td>
+<td class="px-6 py-4 text-sm">$99.00</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300 rounded-full text-xs font-medium">Paid</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:text-blue-700 p-1 rounded hover:bg-primary/10">
+<span class="material-icons">file_download</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+<td class="px-6 py-4 text-sm">Jul 15, 2023</td>
+<td class="px-6 py-4 text-sm font-medium">INV-360-0062</td>
+<td class="px-6 py-4 text-sm">$99.00</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300 rounded-full text-xs font-medium">Failed</span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-primary hover:text-blue-700 p-1 rounded hover:bg-primary/10">
+<span class="material-icons">error_outline</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 bg-slate-50 dark:bg-slate-800/50 flex items-center justify-between">
+<p class="text-xs text-slate-500">Showing last 4 transactions</p>
+<button class="text-xs font-bold text-primary hover:underline">View All History</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Contact Support -->
+<div class="bg-blue-600 rounded-xl p-8 flex flex-col md:flex-row items-center justify-between gap-6 text-white">
+<div class="flex items-center gap-6">
+<div class="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center">
+<span class="material-icons text-4xl">headset_mic</span>
+</div>
+<div>
+<h3 class="text-xl font-bold">Need help with billing?</h3>
+<p class="text-blue-100">Our support team is available 24/7 to assist with payment issues or custom plans.</p>
+</div>
+</div>
+<button class="bg-white text-blue-600 px-8 py-3 rounded-lg font-bold hover:bg-blue-50 transition-colors whitespace-nowrap">
+                        Contact Support
+                    </button>
+</div>
+</div>
+<footer class="max-w-6xl mx-auto px-8 py-12 flex flex-col items-center border-t border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-2 opacity-40 mb-4">
+<span class="material-icons text-xl">apartment</span>
+<span class="font-bold text-lg tracking-tight">Hotel 360</span>
+</div>
+<p class="text-xs text-slate-400">© 2024 Hotel 360 Management Systems. All rights reserved.</p>
+<div class="flex gap-6 mt-4 text-xs font-medium text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Cookie Settings</a>
+</div>
+</footer>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hotel 360 - Main Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1142d4",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101522",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .chart-gradient { background: linear-gradient(180deg, rgba(17, 66, 212, 0.1) 0%, rgba(17, 66, 212, 0) 100%); }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 font-display">
+<!-- Sidebar -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-white dark:bg-background-dark border-r border-slate-200 dark:border-slate-800 z-50 flex flex-col">
+<div class="p-6">
+<div class="flex items-center gap-3 mb-8">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-icons text-white">apartment</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Hotel 360</h1>
+</div>
+<!-- Branch Switcher -->
+<div class="relative mb-8">
+<button class="w-full flex items-center justify-between px-3 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-sm font-medium">
+<div class="flex items-center gap-2">
+<span class="material-icons text-sm text-primary">location_on</span>
+<span>Downtown Branch</span>
+</div>
+<span class="material-icons text-sm">expand_more</span>
+</button>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 bg-primary/10 text-primary rounded-lg font-medium" href="#">
+<span class="material-icons">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors rounded-lg font-medium" href="#">
+<span class="material-icons">calendar_today</span>
+<span>Bookings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors rounded-lg font-medium" href="#">
+<span class="material-icons">bed</span>
+<span>Rooms</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors rounded-lg font-medium" href="#">
+<span class="material-icons">analytics</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors rounded-lg font-medium" href="#">
+<span class="material-icons">people</span>
+<span>Staff</span>
+</a>
+</nav>
+</div>
+<div class="mt-auto p-6 border-t border-slate-200 dark:border-slate-800">
+<a class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors rounded-lg font-medium" href="#">
+<span class="material-icons">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors rounded-lg font-medium" href="#">
+<span class="material-icons">logout</span>
+<span>Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="ml-64 min-h-screen">
+<!-- Top Header -->
+<header class="h-20 bg-white dark:bg-background-dark border-b border-slate-200 dark:border-slate-800 px-8 flex items-center justify-between sticky top-0 z-40">
+<div class="relative w-96">
+<span class="material-icons absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-sm focus:ring-2 focus:ring-primary/50" placeholder="Search for bookings, rooms, guests..." type="text"/>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-icons">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white dark:border-background-dark"></span>
+</button>
+<div class="flex items-center gap-3 pl-6 border-l border-slate-200 dark:border-slate-800">
+<div class="text-right">
+<p class="text-sm font-semibold">Alex Thompson</p>
+<p class="text-xs text-slate-500">General Manager</p>
+</div>
+<img alt="User" class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of a smiling professional man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBh0bPdPq_SB_-GfsnkEqeLCYX5vkUVa4_Bit8ArXjspeQDpKPVdEIsWbrkE-MEdAzXPdOqogZEzQ_B_TwzE9Bfdhc6i1HR69z6wZccI8YR5oRYw4FitCJPgUlaT-iJnKK1svZAqUSMD4_pCeILfH6XJ9_LjfRRqN2C6hGzI8QBpBTj_gRVLFO4j2rKC2LiL75IHaaXFVyzNDAuYS9VegEVcW6qfUUmhOn8qwKZZlrzNP1uk0zUuP73PsH5vaCLXXX-o9oALlamHA"/>
+</div>
+</div>
+</header>
+<!-- Dashboard Content -->
+<div class="p-8 space-y-8">
+<!-- Page Header -->
+<div class="flex items-center justify-between">
+<div>
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Dashboard Overview</h2>
+<p class="text-slate-500 text-sm">Welcome back, Alex. Here's what's happening today.</p>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2.5 rounded-lg flex items-center gap-2 font-medium transition-all shadow-lg shadow-primary/20">
+<span class="material-icons text-sm">add</span>
+                    New Booking
+                </button>
+</div>
+<!-- KPI Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white dark:bg-background-dark p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<div class="w-12 h-12 bg-blue-50 dark:bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+<span class="material-icons">meeting_room</span>
+</div>
+<span class="text-emerald-500 text-sm font-bold flex items-center">
+<span class="material-icons text-sm mr-1">trending_up</span>+2.5%
+                        </span>
+</div>
+<p class="text-slate-500 text-sm font-medium">Occupancy Rate</p>
+<p class="text-2xl font-bold mt-1">84.2%</p>
+</div>
+<div class="bg-white dark:bg-background-dark p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<div class="w-12 h-12 bg-emerald-50 dark:bg-emerald-500/10 rounded-lg flex items-center justify-center text-emerald-600">
+<span class="material-icons">payments</span>
+</div>
+<span class="text-emerald-500 text-sm font-bold flex items-center">
+<span class="material-icons text-sm mr-1">trending_up</span>+5.2%
+                        </span>
+</div>
+<p class="text-slate-500 text-sm font-medium">Total Revenue</p>
+<p class="text-2xl font-bold mt-1">$12,540</p>
+</div>
+<div class="bg-white dark:bg-background-dark p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<div class="w-12 h-12 bg-amber-50 dark:bg-amber-500/10 rounded-lg flex items-center justify-center text-amber-600">
+<span class="material-icons">login</span>
+</div>
+<span class="text-slate-400 text-sm font-bold">Today</span>
+</div>
+<p class="text-slate-500 text-sm font-medium">Daily Check-ins</p>
+<p class="text-2xl font-bold mt-1">24</p>
+</div>
+<div class="bg-white dark:bg-background-dark p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<div class="w-12 h-12 bg-purple-50 dark:bg-purple-500/10 rounded-lg flex items-center justify-center text-purple-600">
+<span class="material-icons">analytics</span>
+</div>
+<span class="text-red-500 text-sm font-bold flex items-center">
+<span class="material-icons text-sm mr-1">trending_down</span>-1.2%
+                        </span>
+</div>
+<p class="text-slate-500 text-sm font-medium">RevPAR</p>
+<p class="text-2xl font-bold mt-1">$156.40</p>
+</div>
+</div>
+<!-- Main Charts Section -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Large Revenue Area Chart -->
+<div class="lg:col-span-2 bg-white dark:bg-background-dark p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-lg font-bold">Revenue Overview</h3>
+<p class="text-sm text-slate-500">Comparison between current and previous month</p>
+</div>
+<select class="text-sm bg-slate-50 dark:bg-slate-800 border-none rounded-lg focus:ring-primary/50">
+<option>Last 30 Days</option>
+<option>Last 90 Days</option>
+</select>
+</div>
+<div class="h-64 relative flex items-end justify-between gap-4 pt-4">
+<!-- Mock Area Chart -->
+<div class="absolute inset-0 chart-gradient rounded-t-lg opacity-40"></div>
+<div class="absolute bottom-0 left-0 right-0 h-px bg-slate-200 dark:bg-slate-800"></div>
+<!-- Chart Columns -->
+<div class="flex-1 bg-primary/20 rounded-t h-[40%] group relative">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">$4.2k</div>
+</div>
+<div class="flex-1 bg-primary/30 rounded-t h-[55%] group relative"></div>
+<div class="flex-1 bg-primary/40 rounded-t h-[45%] group relative"></div>
+<div class="flex-1 bg-primary/50 rounded-t h-[70%] group relative"></div>
+<div class="flex-1 bg-primary/60 rounded-t h-[60%] group relative"></div>
+<div class="flex-1 bg-primary/70 rounded-t h-[85%] group relative"></div>
+<div class="flex-1 bg-primary rounded-t h-[75%] group relative"></div>
+<div class="flex-1 bg-primary/80 rounded-t h-[95%] group relative"></div>
+<div class="flex-1 bg-primary/60 rounded-t h-[65%] group relative"></div>
+<div class="flex-1 bg-primary/40 rounded-t h-[50%] group relative"></div>
+</div>
+<div class="flex justify-between mt-4 text-xs text-slate-400 font-medium px-1">
+<span>01 May</span>
+<span>07 May</span>
+<span>14 May</span>
+<span>21 May</span>
+<span>28 May</span>
+</div>
+</div>
+<!-- Booking Trends Graph -->
+<div class="bg-white dark:bg-background-dark p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<h3 class="text-lg font-bold mb-6">Booking Channels</h3>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="font-medium">Direct Website</span>
+<span class="text-slate-500">45%</span>
+</div>
+<div class="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 45%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="font-medium">Booking.com</span>
+<span class="text-slate-500">30%</span>
+</div>
+<div class="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="bg-blue-400 h-full rounded-full" style="width: 30%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="font-medium">Expedia</span>
+<span class="text-slate-500">15%</span>
+</div>
+<div class="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="bg-amber-400 h-full rounded-full" style="width: 15%"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-sm">
+<span class="font-medium">Walk-ins</span>
+<span class="text-slate-500">10%</span>
+</div>
+<div class="w-full h-2 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="bg-emerald-400 h-full rounded-full" style="width: 10%"></div>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-sm font-medium text-slate-500">New Bookings Today</p>
+<p class="text-2xl font-bold">112</p>
+</div>
+<div class="text-right">
+<p class="text-xs text-emerald-500 font-bold">+12%</p>
+<p class="text-xs text-slate-400">vs yesterday</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Bookings Table -->
+<div class="bg-white dark:bg-background-dark rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<h3 class="text-lg font-bold">Recent Bookings</h3>
+<button class="text-primary text-sm font-semibold hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-800/50 text-slate-500 text-xs uppercase tracking-wider">
+<tr>
+<th class="px-6 py-4 font-semibold">Guest</th>
+<th class="px-6 py-4 font-semibold">Room Type</th>
+<th class="px-6 py-4 font-semibold">Date Range</th>
+<th class="px-6 py-4 font-semibold">Status</th>
+<th class="px-6 py-4 font-semibold">Amount</th>
+<th class="px-6 py-4 font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-slate-800 text-sm">
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600 text-xs">SM</div>
+<div>
+<p class="font-semibold">Sarah Miller</p>
+<p class="text-xs text-slate-500">ID: #BK-8291</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-medium">Deluxe Suite</td>
+<td class="px-6 py-4">Oct 12 - Oct 15</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-emerald-100 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-500 rounded-full text-xs font-bold">Confirmed</span>
+</td>
+<td class="px-6 py-4 font-semibold">$1,250.00</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary"><span class="material-icons text-lg">more_horiz</span></button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600 text-xs">JW</div>
+<div>
+<p class="font-semibold">James Wilson</p>
+<p class="text-xs text-slate-500">ID: #BK-8292</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-medium">Standard Twin</td>
+<td class="px-6 py-4">Oct 12 - Oct 14</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-amber-100 text-amber-700 dark:bg-amber-500/10 dark:text-amber-500 rounded-full text-xs font-bold">Pending</span>
+</td>
+<td class="px-6 py-4 font-semibold">$480.00</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary"><span class="material-icons text-lg">more_horiz</span></button>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600 text-xs">LC</div>
+<div>
+<p class="font-semibold">Laura Chen</p>
+<p class="text-xs text-slate-500">ID: #BK-8293</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 font-medium">Penthouse</td>
+<td class="px-6 py-4">Oct 13 - Oct 18</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300 rounded-full text-xs font-bold">Checked Out</span>
+</td>
+<td class="px-6 py-4 font-semibold">$3,400.00</td>
+<td class="px-6 py-4 text-right">
+<button class="text-slate-400 hover:text-primary"><span class="material-icons text-lg">more_horiz</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</body></html>
