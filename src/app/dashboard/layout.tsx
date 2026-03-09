@@ -55,6 +55,7 @@ export default async function DashboardLayout({
         <Header 
           userName={profile.full_name || "User"} 
           userRole={profile.role} 
+          userImage={profile.avatar_url}
         />
         <main className="flex-1 p-8">
           {children}

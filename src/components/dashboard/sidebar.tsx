@@ -37,7 +37,7 @@ export function Sidebar({ userRole, hotelName, currentBranch = "Downtown Branch"
           <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
             <MaterialIcon icon="apartment" className="text-white" />
           </div>
-          <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white uppercase">Hotel 360</h1>
+          <h1 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white uppercase truncate max-w-[150px]">{hotelName}</h1>
         </Link>
 
         {/* Branch Switcher (Visible to Super Admin) */}

@@ -28,7 +28,7 @@ export async function POST(request: Request) {
       const plan = PLANS[planId];
       
       await supabase
-        .from("organizations")
+        .from("hotels")
         .update({
           subscription_status: "active",
           subscription_plan: planId,
@@ -37,13 +37,13 @@ export async function POST(request: Request) {
           subscription_start_date: new Date().toISOString(),
           subscription_end_date: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
         })
-        .eq("id", data.metadata.organization_id || await getOrgId(data.metadata.user_id));
+        .eq("id", data.metadata.hotel_id || await getHotelId(data.metadata.user_id));
       break;
 
     case "subscription.disable":
     case "invoice.payment_failed":
       await supabase
-        .from("organizations")
+        .from("hotels")
         .update({
           subscription_status: "expired",
         })
@@ -54,12 +54,12 @@ export async function POST(request: Request) {
   return new Response("OK", { status: 200 });
 }
 
-async function getOrgId(userId: string) {
+async function getHotelId(userId: string) {
   const supabase = await createClient();
   const { data } = await supabase
     .from("profiles")
-    .select("organization_id")
+    .select("hotel_id")
     .eq("id", userId)
     .single();
-  return data?.organization_id;
+  return data?.hotel_id;
 }

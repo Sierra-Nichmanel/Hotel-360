@@ -10,21 +10,21 @@ export async function createBranchAction(formData: FormData) {
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("organization_id, role, organizations(branch_limit)")
+    .select("hotel_id, role, hotels(branch_limit)")
     .eq("id", user.id)
     .single();
 
-  if (profile?.role !== "super_admin") {
-    throw new Error("Only Super Admins can create branches");
+  if (profile?.role !== "admin" && profile?.role !== "super_admin") {
+    throw new Error("Only Admins can create branches");
   }
 
   // Check branch limit
   const { count } = await supabase
     .from("branches")
     .select("*", { count: 'exact', head: true })
-    .eq("organization_id", profile.organization_id);
+    .eq("hotel_id", profile.hotel_id);
 
-  const limit = (profile.organizations as any)?.branch_limit || 1;
+  const limit = (profile.hotels as any)?.branch_limit || 1;
 
   if ((count || 0) >= limit) {
     throw new Error(`Branch limit reached. Your plan allows a maximum of ${limit} branch(es).`);
@@ -37,7 +37,7 @@ export async function createBranchAction(formData: FormData) {
   const { error } = await supabase
     .from("branches")
     .insert({
-      organization_id: profile.organization_id,
+      hotel_id: profile.hotel_id,
       name,
       address,
       phone,

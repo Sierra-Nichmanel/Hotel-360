@@ -12,29 +12,26 @@ export default async function SubscriptionPage() {
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("*, organizations(*)")
+    .select("*, hotels(*)")
     .eq("id", user.id)
     .single();
 
-  if (profile?.role !== "super_admin") {
+  if (profile?.role !== "admin" && profile?.role !== "super_admin") {
     redirect("/dashboard");
   }
 
-  const organization = profile.organizations;
+  const hotel = (profile as any).hotels;
 
   // Real Usage Metrics
   const { data: bookingCount } = await supabase
     .from("bookings")
     .select("id", { count: 'exact', head: true })
-    .eq("organization_id", profile.organization_id);
+    .eq("hotel_id", profile.hotel_id);
 
   const { data: staffCount } = await supabase
     .from("profiles")
     .select("id", { count: 'exact', head: true })
-    .eq("organization_id", profile.organization_id);
-
-  const totalBookings = bookingCount?.length || 0;
-  const totalStaff = staffCount?.length || 0;
+    .eq("hotel_id", profile.hotel_id);
 
   return (
     <div className="flex flex-col animate-in fade-in duration-500">
@@ -62,13 +59,13 @@ export default async function SubscriptionPage() {
             <div>
               <h3 className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">Current Subscription</h3>
               <div className="flex items-baseline gap-2 mb-4">
-                <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white uppercase tracking-tighter capitalize">{organization.subscription_plan || 'Scale'}</h2>
+                <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white uppercase tracking-tighter capitalize">{hotel.subscription_plan || 'Scale'}</h2>
                 <span className="text-slate-400 text-lg font-bold uppercase tracking-tight italic">/ Monthly</span>
               </div>
               <p className="text-sm text-slate-600 dark:text-slate-400 max-w-md font-medium">
                 Your next billing cycle starts shortly. You are currently utilizing the <span className="font-bold text-slate-900 dark:text-white uppercase">
-                  {organization.subscription_plan || 'Scale'}
-                </span> tier for unlimited operational excellence.
+                  {hotel.subscription_plan || 'Scale'}
+                </span> tier for operational excellence.
               </p>
             </div>
             
@@ -123,20 +120,10 @@ export default async function SubscriptionPage() {
             </div>
           </div>
           
-        {/* Plan Comparison */}
-        <div className="pt-8">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-xl font-bold uppercase tracking-tight">Expand Your Potential</h2>
-            <div className="flex items-center bg-slate-100 dark:bg-slate-800 p-1 rounded-xl">
-              <button className="px-5 py-2 text-[10px] font-bold uppercase tracking-widest rounded-lg">Monthly</button>
-              <button className="px-5 py-2 text-[10px] font-bold uppercase tracking-widest bg-white dark:bg-slate-700 shadow-sm rounded-lg text-primary">Yearly (Save 20%)</button>
-            </div>
-          </div>
-          
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {/* Starter */}
-            <div className={`bg-white dark:bg-slate-900 border ${organization.subscription_plan === 'starter' ? 'border-primary shadow-lg' : 'border-slate-200 dark:border-slate-800'} rounded-2xl p-6 flex flex-col hover:border-primary/40 transition-all cursor-pointer group`}>
-              {organization.subscription_plan === 'starter' && <div className="bg-primary text-white text-[8px] font-bold uppercase tracking-widest px-3 py-1 rounded-full w-fit mb-4">Active</div>}
+            <div className={`bg-white dark:bg-slate-900 border ${hotel.subscription_plan === 'starter' ? 'border-primary shadow-lg' : 'border-slate-200 dark:border-slate-800'} rounded-2xl p-6 flex flex-col hover:border-primary/40 transition-all cursor-pointer group`}>
+              {hotel.subscription_plan === 'starter' && <div className="bg-primary text-white text-[8px] font-bold uppercase tracking-widest px-3 py-1 rounded-full w-fit mb-4">Active</div>}
               <h3 className="text-lg font-bold mb-1 uppercase tracking-tight group-hover:text-primary transition-colors">Starter</h3>
               <p className="text-slate-500 dark:text-slate-400 text-[10px] mb-6 italic">Boutique property control.</p>
               <div className="mb-6 font-bold">
@@ -147,16 +134,13 @@ export default async function SubscriptionPage() {
                 <li className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-tight text-slate-600 dark:text-slate-400">
                   <MaterialIcon icon="check_circle" className="text-emerald-500 text-xs" /> Up to 1 Property
                 </li>
-                <li className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-tight text-slate-600 dark:text-slate-400">
-                  <MaterialIcon icon="check_circle" className="text-emerald-500 text-xs" /> Core Reports
-                </li>
               </ul>
               <button className="w-full py-2.5 border border-slate-200 dark:border-slate-800 rounded-xl font-bold text-[9px] uppercase tracking-widest text-slate-600 dark:text-slate-400">Select</button>
             </div>
 
             {/* Growth */}
-            <div className={`bg-white dark:bg-slate-900 border ${organization.subscription_plan === 'growth' ? 'border-primary shadow-lg' : 'border-slate-200 dark:border-slate-800'} rounded-2xl p-6 flex flex-col hover:border-primary/40 transition-all cursor-pointer group`}>
-              {organization.subscription_plan === 'growth' && <div className="bg-primary text-white text-[8px] font-bold uppercase tracking-widest px-3 py-1 rounded-full w-fit mb-4">Active</div>}
+            <div className={`bg-white dark:bg-slate-900 border ${hotel.subscription_plan === 'growth' ? 'border-primary shadow-lg' : 'border-slate-200 dark:border-slate-800'} rounded-2xl p-6 flex flex-col hover:border-primary/40 transition-all cursor-pointer group`}>
+              {hotel.subscription_plan === 'growth' && <div className="bg-primary text-white text-[8px] font-bold uppercase tracking-widest px-3 py-1 rounded-full w-fit mb-4">Active</div>}
               <h3 className="text-lg font-bold mb-1 uppercase tracking-tight group-hover:text-primary transition-colors">Growth</h3>
               <p className="text-slate-500 dark:text-slate-400 text-[10px] mb-6 italic">Scaling hotel chains.</p>
               <div className="mb-6 font-bold">
@@ -167,16 +151,13 @@ export default async function SubscriptionPage() {
                 <li className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-tight text-slate-600 dark:text-slate-400">
                   <MaterialIcon icon="check_circle" className="text-emerald-500 text-xs" /> Up to 5 Properties
                 </li>
-                <li className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-tight text-slate-600 dark:text-slate-400">
-                  <MaterialIcon icon="check_circle" className="text-emerald-500 text-xs" /> Branch Manager
-                </li>
               </ul>
               <button className="w-full py-2.5 border border-slate-200 dark:border-slate-800 rounded-xl font-bold text-[9px] uppercase tracking-widest text-slate-600 dark:text-slate-400">Select</button>
             </div>
 
             {/* Scale */}
-            <div className={`bg-white dark:bg-slate-900 border ${organization.subscription_plan === 'scale' || !organization.subscription_plan ? 'border-primary shadow-xl scale-105 z-10' : 'border-slate-200 dark:border-slate-800'} rounded-2xl p-6 flex flex-col hover:border-primary/40 transition-all cursor-pointer group`}>
-              {(!organization.subscription_plan || organization.subscription_plan === 'scale') && <div className="bg-primary text-white text-[8px] font-bold uppercase tracking-widest px-3 py-1 rounded-full w-fit mb-4">Current Choice</div>}
+            <div className={`bg-white dark:bg-slate-900 border ${hotel.subscription_plan === 'scale' || !hotel.subscription_plan ? 'border-primary shadow-xl scale-105 z-10' : 'border-slate-200 dark:border-slate-800'} rounded-2xl p-6 flex flex-col hover:border-primary/40 transition-all cursor-pointer group`}>
+              {(!hotel.subscription_plan || hotel.subscription_plan === 'scale') && <div className="bg-primary text-white text-[8px] font-bold uppercase tracking-widest px-3 py-1 rounded-full w-fit mb-4">Current Choice</div>}
               <h3 className="text-lg font-bold mb-1 uppercase tracking-tight group-hover:text-primary transition-colors">Scale</h3>
               <p className="text-slate-500 dark:text-slate-400 text-[10px] mb-6 italic">Large scale operations.</p>
               <div className="mb-6 font-bold">
@@ -187,15 +168,12 @@ export default async function SubscriptionPage() {
                 <li className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-tight text-slate-900 dark:text-white">
                   <MaterialIcon icon="check_circle" className="text-primary text-xs" /> 20 Properties
                 </li>
-                <li className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-tight text-slate-900 dark:text-white">
-                  <MaterialIcon icon="check_circle" className="text-primary text-xs" /> AI Pricing
-                </li>
               </ul>
               <button className="w-full py-2.5 bg-primary text-white rounded-xl font-bold text-[9px] uppercase tracking-widest">Selected</button>
             </div>
 
             {/* Enterprise */}
-            <div className={`bg-white dark:bg-slate-900 border ${organization.subscription_plan === 'enterprise' ? 'border-primary shadow-lg' : 'border-slate-200 dark:border-slate-800'} rounded-2xl p-6 flex flex-col hover:border-primary/40 transition-all cursor-pointer group`}>
+            <div className={`bg-white dark:bg-slate-900 border ${hotel.subscription_plan === 'enterprise' ? 'border-primary shadow-lg' : 'border-slate-200 dark:border-slate-800'} rounded-2xl p-6 flex flex-col hover:border-primary/40 transition-all cursor-pointer group`}>
               <h3 className="text-lg font-bold mb-1 uppercase tracking-tight group-hover:text-primary transition-colors">Enterprise</h3>
               <p className="text-slate-500 dark:text-slate-400 text-[10px] mb-6 italic">Custom solutions.</p>
               <div className="mb-6 font-bold">
@@ -205,14 +183,10 @@ export default async function SubscriptionPage() {
                 <li className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-tight text-slate-600 dark:text-slate-400">
                   <MaterialIcon icon="check_circle" className="text-emerald-500 text-xs" /> Unlimited Nodes
                 </li>
-                <li className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-tight text-slate-600 dark:text-slate-400">
-                  <MaterialIcon icon="check_circle" className="text-emerald-500 text-xs" /> White Label
-                </li>
               </ul>
               <button className="w-full py-2.5 border border-slate-200 dark:border-slate-800 rounded-xl font-bold text-[9px] uppercase tracking-widest text-slate-600 dark:text-slate-400">Contact</button>
             </div>
           </div>
-        </div>
         </div>
 
         {/* Billing Information & Payment History */}
@@ -262,9 +236,9 @@ export default async function SubscriptionPage() {
                 </thead>
                 <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
                   {[
-                    { date: 'Oct 15, 2023', id: 'INV-360-0092', amount: '$1,200.00' },
-                    { date: 'Sep 15, 2023', id: 'INV-360-0081', amount: '$99.00' },
-                    { date: 'Aug 15, 2023', id: 'INV-360-0075', amount: '$99.00' },
+                    { date: 'Oct 15, 2023', id: 'INV-360-0092', amount: '₦1,200,000.00' },
+                    { date: 'Sep 15, 2023', id: 'INV-360-0081', amount: '₦99,000.00' },
+                    { date: 'Aug 15, 2023', id: 'INV-360-0075', amount: '₦99,000.00' },
                   ].map((inv) => (
                     <tr key={inv.id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/20 transition-colors">
                       <td className="px-8 py-5 text-xs font-bold uppercase text-slate-600 dark:text-slate-400">{inv.date}</td>

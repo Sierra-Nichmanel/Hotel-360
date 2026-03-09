@@ -92,30 +92,6 @@ export function AuthForm() {
               <p className="text-[10px] text-slate-400 ml-1 uppercase tracking-wider font-bold">This will be the name of your main property or group.</p>
             </div>
 
-            <div className="space-y-3">
-              <label className="text-sm font-medium text-slate-700 dark:text-slate-300 ml-1">
-                Choose Your Launch Tier
-              </label>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                {[
-                  { id: 'starter', name: 'Starter', price: '₦5k', limit: '1 Branch' },
-                  { id: 'growth', name: 'Growth', price: '₦15k', limit: '5 Branches' },
-                  { id: 'scale', name: 'Scale', price: '₦50k', limit: '20 Branches' },
-                ].map((plan) => (
-                  <label key={plan.id} className="relative cursor-pointer group">
-                    <input type="radio" name="plan" value={plan.id} defaultChecked={plan.id === 'starter'} className="peer sr-only" />
-                    <div className="p-3 border border-slate-200 dark:border-slate-800 rounded-xl peer-checked:border-primary peer-checked:bg-primary/5 transition-all flex flex-col items-center text-center group-hover:border-primary/50">
-                      <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 peer-checked:text-primary">{plan.name}</span>
-                      <span className="text-sm font-bold mt-1 text-slate-900 dark:text-white">{plan.price}</span>
-                      <span className="text-[9px] font-bold text-slate-500 italic mt-0.5">{plan.limit}</span>
-                    </div>
-                    <div className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-primary rounded-full hidden peer-checked:flex items-center justify-center">
-                      <MaterialIcon icon="check" className="text-white text-[10px]" />
-                    </div>
-                  </label>
-                ))}
-              </div>
-            </div>
           </>
         )}
 

@@ -10,7 +10,7 @@ const VALID_TRANSITIONS: Record<string, string[]> = {
 };
 
 export async function createBooking(
-  organizationId: string,
+  hotelId: string,
   branchId: string,
   roomId: string,
   roomTypeId: string,
@@ -22,7 +22,7 @@ export async function createBooking(
 
   // 1. Calculate price with the pricing engine
   const { totalAmount, nightlyBreakdown } = await calculateBookingPrice(
-    organizationId,
+    hotelId,
     branchId,
     roomTypeId,
     checkIn,
@@ -33,7 +33,7 @@ export async function createBooking(
   const { data: booking, error } = await supabase
     .from("bookings")
     .insert({
-      hotel_id: organizationId,
+      hotel_id: hotelId,
       branch_id: branchId,
       room_id: roomId,
       guest_name: guestData.name,

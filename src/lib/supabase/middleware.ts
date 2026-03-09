@@ -68,6 +68,23 @@ export async function updateSession(request: NextRequest) {
     const status = (profile?.hotels as any)?.subscription_status;
     const isRestrictedPath = !request.nextUrl.pathname.startsWith("/dashboard/subscription");
 
+    if (status === "onboarding") {
+      const url = request.nextUrl.clone();
+      url.pathname = "/onboarding";
+      const response = NextResponse.redirect(url);
+      supabaseResponse.cookies.getAll().forEach((cookie) => {
+        response.cookies.set(cookie.name, cookie.value, {
+          path: cookie.path,
+          domain: cookie.domain,
+          secure: cookie.secure,
+          httpOnly: cookie.httpOnly,
+          expires: cookie.expires,
+          sameSite: cookie.sameSite,
+        });
+      });
+      return response;
+    }
+
     if (status === "pending_payment") {
       const url = request.nextUrl.clone();
       url.pathname = "/checkout";

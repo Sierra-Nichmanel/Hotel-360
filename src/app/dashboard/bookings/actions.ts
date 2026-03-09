@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { createBooking } from "@/services/bookings";
 
 export async function createBookingAction(formData: FormData) {
-  const organizationId = formData.get("organization_id") as string;
+  const hotelId = formData.get("hotel_id") as string;
   const guestName = formData.get("guest_name") as string;
   const roomJson = formData.get("room_data") as string;
   const checkIn = formData.get("check_in") as string;
@@ -14,7 +14,7 @@ export async function createBookingAction(formData: FormData) {
 
   try {
     await createBooking(
-      organizationId,
+      hotelId,
       roomData.branch_id,
       roomData.id,
       roomData.type_id,

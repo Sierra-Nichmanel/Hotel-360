@@ -114,10 +114,10 @@ export function AddRoomTypeModal({ isOpen, onClose, organizationId, branchId }: 
                   <div className="space-y-3">
                     <label className="text-[9px] font-black uppercase tracking-widest text-slate-400 ml-1">Threshold Capacity</label>
                     <div className="relative">
-                      <select name="capacity" className="w-full px-5 py-4 bg-slate-50 dark:bg-slate-800 border-transparent rounded-2xl focus:ring-2 focus:ring-primary font-black text-sm tracking-tight transition-all appearance-none cursor-pointer shadow-inner uppercase">
+                      <select name="capacity" defaultValue="3" className="w-full px-5 py-4 bg-slate-50 dark:bg-slate-800 border-transparent rounded-2xl focus:ring-2 focus:ring-primary font-black text-sm tracking-tight transition-all appearance-none cursor-pointer shadow-inner uppercase">
                         <option value="1">1 GUEST</option>
                         <option value="2">2 GUESTS</option>
-                        <option value="3" selected>3 GUESTS</option>
+                        <option value="3">3 GUESTS</option>
                         <option value="4">4 GUESTS</option>
                         <option value="5">5+ GUESTS</option>
                       </select>

@@ -26,7 +26,7 @@ export default async function UsersPage() {
   const { data: branches } = await supabase
     .from("branches")
     .select("id, name")
-    .eq("organization_id", profile.organization_id);
+    .eq("hotel_id", profile.hotel_id);
 
   return (
     <UsersClient 

@@ -24,14 +24,12 @@ export async function login(formData: FormData) {
 }
 
 export async function signup(formData: FormData) {
-  console.log("Signup starting (Refactored)...");
   
   const supabase = await createClient();
 
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
   const hotelName = formData.get("hotelName") as string;
-  const plan = (formData.get("plan") as string) || "starter";
 
   // 1. Core Auth Signup with metadata for the DB trigger
   const { data: authData, error: authError } = await supabase.auth.signUp({
@@ -40,7 +38,6 @@ export async function signup(formData: FormData) {
     options: {
       data: {
         hotel_name: hotelName,
-        subscription_plan: plan,
       },
     },
   });
@@ -54,9 +51,9 @@ export async function signup(formData: FormData) {
     return { error: "Signup failed. Please try again." };
   }
 
-  // REVALIDATE AND REDIRECT TO CHECKOUT
+  // REVALIDATE AND REDIRECT TO DASHBOARD (middleware will handle onboarding)
   revalidatePath("/", "layout");
-  redirect(`/checkout?plan=${plan}`);
+  redirect("/dashboard");
 }
 
 export async function signout() {

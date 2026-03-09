@@ -6,7 +6,7 @@ import { revalidatePath } from "next/cache";
 export async function createRoomTypeAction(formData: FormData) {
   const supabase = await createClient();
   
-  const organization_id = formData.get("organization_id") as string;
+  const hotel_id = formData.get("hotel_id") as string;
   const branch_id = formData.get("branch_id") as string;
   const name = formData.get("name") as string;
   const base_price = parseFloat(formData.get("base_price") as string);
@@ -14,7 +14,7 @@ export async function createRoomTypeAction(formData: FormData) {
   const { error } = await supabase
     .from("room_types")
     .insert({
-      organization_id,
+      hotel_id,
       branch_id,
       name,
       base_price,
@@ -32,7 +32,7 @@ export async function createRoomTypeAction(formData: FormData) {
 export async function createRoomAction(formData: FormData) {
   const supabase = await createClient();
   
-  const organization_id = formData.get("organization_id") as string;
+  const hotel_id = formData.get("hotel_id") as string;
   const branch_id = formData.get("branch_id") as string;
   const room_type_id = formData.get("room_type_id") as string;
   const room_number = formData.get("room_number") as string;
@@ -40,7 +40,7 @@ export async function createRoomAction(formData: FormData) {
   const { error } = await supabase
     .from("rooms")
     .insert({
-      organization_id,
+      hotel_id,
       branch_id,
       room_type_id,
       room_number,

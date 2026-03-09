@@ -7,8 +7,20 @@ Hotel 360 is a comprehensive, cloud-based SaaS solution designed for modern hote
 ### 🏢 Multi-Branch Control
 
 - **Centralized Management**: Manage global or regional hotel chains from a single login.
-- **Real-time Status**: View the operational heartbeat of all properties at a glance.
+- **Dynamic Branding**: Sidebar automatically synchronizes with your hotel name for a professional, white-labeled experience.
 - **Branch-Specific Settings**: Customize configurations for each location.
+
+### ⚙️ Configuration Hub
+
+- **Hotel Identity**: Manually manage your legal entity name and headquarters location.
+- **Property Specifics**: Fine-tune branch-specific details including contact information and physical addresses.
+- **Role-Based Access**: Intelligent visibility controls for Super Admins, Admins, and Branch Managers.
+
+### 👤 Personal Identity & Security
+
+- **Dedicated Profile Page**: Manage your personal administrative footprint separately from hotel settings.
+- **Visual Presence**: Support for custom avatar URLs to personalize your dashboard experience.
+- **Credential Management**: Securely update your administrative email and communication channels.
 
 ### 📊 Operational Dashboard
 
