@@ -9,9 +9,10 @@ interface BranchesClientProps {
   branches: any[];
   maxBranches: number;
   staff: any[];
+  hotelId: string;
 }
 
-export function BranchesClient({ branches, maxBranches, staff }: BranchesClientProps) {
+export function BranchesClient({ branches, maxBranches, staff, hotelId }: BranchesClientProps) {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [editingBranch, setEditingBranch] = useState<any>(null);
 

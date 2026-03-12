@@ -36,7 +36,7 @@ export default function LandingPage() {
             <img 
               alt="Luxury Hotel Lobby" 
               className="w-full h-full object-cover" 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpQJ5_ogav5XaYrFupr_QsScP5VpAyYljQ6km3j7bhtBDEh5g4upoMHqIEGHZjIogwdlExEkDrmh06v6yMW_b9tcfna29mRqrymwPh07ZFTMb5KTacmKOgHcHx-xts1KCfTSsz3kY0yf3aIMJXk1aTNRsukRJSHq3MOPaMPTD-Ehq9HNRNv5x2POEqj6_2kMBEgAhUPm4c18Bvg2Kph7bG1UaRER_AScROnEWntSLfZd-6pYm9EzIBHmGTBEeiqyoFD7dYqmVM2w"
+              src="/hero-hotel.png"
             />
             <div className="absolute inset-0 hero-gradient"></div>
           </div>
