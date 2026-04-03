@@ -64,4 +64,27 @@
   .heading-elegant {
     @apply text-slate-900 dark:text-white font-bold tracking-tight;
   }
+
+  /* Premium Global Button & Link Interactions */
+  button, 
+  a[href], 
+  input[type="button"], 
+  input[type="submit"] {
+    cursor: pointer;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+
+  button:not(:disabled):hover,
+  input[type="button"]:not(:disabled):hover,
+  input[type="submit"]:not(:disabled):hover {
+    transform: translateY(-2px);
+  }
+
+  button:not(:disabled):active,
+  input[type="button"]:not(:disabled):active,
+  input[type="submit"]:not(:disabled):active {
+    transform: scale(0.96) translateY(0);
+  }
 }
