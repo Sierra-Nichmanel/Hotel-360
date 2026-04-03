@@ -13,7 +13,7 @@ export default async function ReportsPage() {
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("organization_id")
+    .select("hotel_id")
     .eq("id", user.id)
     .single();
 
@@ -24,7 +24,7 @@ export default async function ReportsPage() {
   const { data: revenueData } = await supabase
     .from("bookings")
     .select("total_price, nightly_breakdown")
-    .eq("organization_id", profile.organization_id)
+    .eq("hotel_id", profile.hotel_id)
     .neq("status", "cancelled");
 
   const totalRevenue = revenueData?.reduce((sum, b) => sum + (Number(b.total_price) || 0), 0) || 0;
@@ -33,7 +33,7 @@ export default async function ReportsPage() {
   const { data: rooms } = await supabase
     .from("rooms")
     .select("status")
-    .eq("organization_id", profile.organization_id);
+    .eq("hotel_id", profile.hotel_id);
 
   const totalRooms = rooms?.length || 0;
   const occupiedRooms = rooms?.filter(r => r.status === 'occupied').length || 0;
@@ -52,7 +52,7 @@ export default async function ReportsPage() {
   const { data: branches } = await supabase
     .from("branches")
     .select("*, rooms(status)")
-    .eq("organization_id", profile.organization_id);
+    .eq("hotel_id", profile.hotel_id);
 
   const branchMetrics = branches?.map(b => {
       const bRooms = (b.rooms as any[]) || [];
